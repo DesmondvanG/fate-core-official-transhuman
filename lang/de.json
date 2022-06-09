@@ -877,6 +877,139 @@
 			"default_name": "Fate Condensed",
 			"default_description": "Fate Condensed Standard Charakter"
 		},
+		"eclipse-phase":{
+			"actorLink": true,
+			"stunts": {},
+			"tracks": {
+				"Mild Consequence": {
+					"name": "Leichte Konsequenz",
+					"category": "Combat",
+					"description": "Wenn Sie eine Konsequenz nehmen, um einen Treffer zu absorbieren, schreiben Sie einen Aspekt in einen leeren Konsequenz-Slot, der beschreibt, welcher Schaden Ihrem Charakter zugefügt wird. Verwenden Sie den Schweregrad der Konsequenz als Richtwert: Wenn Sie von einer Sternenbrut gebissen wurden, könnte eine leichte Konsequenz \"Fieser Biss\" sein.",
+					"universal": true,
+					"unique": true,
+					"recovery_type": "Lasting",
+					"aspect": "Definiert, wenn markiert",
+					"when_marked": "Wenn Schaden genommen wird",
+					"recovery_conditions": "Um den Genesungsprozess zu starten, muss dem Behandelnden eine Überwindungsaktion mit einer geeigneten Fertigkeit gelingen, deren Schwierigkeit der Schwere der Konsequenz entspricht: Fair (+2) für eine leichte Konsequenz. Diese Schwierigkeit erhöht sich um zwei, wenn Sie versuchen, sich selbst zu behandeln (es ist einfacher, jemand anderen das tun zu lassen).\n\nWenn Sie bei diesem Wurf erfolgreich sind, schreiben Sie die Konsequenz um, um anzuzeigen, dass es sich um eine Heilung handelt. Ein gebrochener Arm kann z.B. als Arm in einem Gips umgeschrieben werden.\n\nErfolg hier ist nur die erste Hürde - es braucht Zeit, um die Konsequenz zu klären.\n\nMilde Konsequenzen brauchen eine volle Szene nach der Behandlung, um zu klären.",
+					"boxes": 0,
+					"harm_can_absorb": 2
+				},
+				"Moderate Consequence": {
+					"name": "Mittlere Konsequenz",
+					"category": "Combat",
+					"description": "Wenn Sie eine Konsequenz nehmen, um einen Treffer zu absorbieren, schreiben Sie einen Aspekt in einen leeren Konsequenz-Slot, der beschreibt, welcher Schaden Ihrem Charakter zugefügt wird. Verwenden Sie den Schweregrad der Konsequenz als Richtwert: Wenn Sie von einer Sternenbrut gebissen wurden, könnte eine moderate Konsequenz ein Biss sein, der nicht aufhört zu bluten.",
+					"universal": true,
+					"unique": true,
+					"recovery_type": "Lasting",
+					"aspect": "Definiert, wenn markiert",
+					"when_marked": "Wenn Schaden genommen wird",
+					"recovery_conditions": "Um den Genesungsprozess zu starten, muss die behandelnde Person eine überwundene Aktion mit einer geeigneten Fertigkeit erfolgreich ausführen. Diese Überwindungsaktion hat eine Schwierigkeit, die der Schwere der Folge entspricht: Groß (+4) für mittelschwer. Diese Schwierigkeit erhöht sich um zwei, wenn Sie versuchen, sich selbst zu behandeln (es ist einfacher, jemand anderen das tun zu lassen).\n\nWenn Ihnen dieser Wurf gelingt, schreiben Sie die Konsequenz um, um anzuzeigen, dass es sich um Heilung handelt. Ein gebrochener Arm kann z.B. als Arm in einem Gips umgeschrieben werden.\n\nErfolg hier ist nur die erste Hürde - es braucht Zeit, um die Konsequenz zu beseitigen.\n\nModerate Konsequenzen brauchen eine ganze Sitzung nach der Behandlung, um sie zu beseitigen.",
+					"boxes": 0,
+					"harm_can_absorb": 4
+				},
+				"Severe Consequence": {
+					"name": "Schwere Konsequenz",
+					"category": "Combat",
+					"description": "Schwere Konsequenzen führen direkt in die Notaufnahme (oder was auch immer das Äquivalent in Ihrem Spiel ist) - sie sind extrem fies und hindern Sie daran, eine Menge Dinge zu tun, und werden Sie für eine Weile außer Gefecht setzen. Auf der mentalen Seite drücken sie Dinge wie ein ernsthaftes Trauma oder beziehungsverändernden Schaden aus. Beispiele: Verbrennung zweiten Grades, komplizierte Fraktur, heraushängende Eingeweide, lähmende Scham, traumabedingte Phobie.",
+					"universal": true,
+					"unique": true,
+					"recovery_type": "Lasting",
+					"aspect": "Definiert, wenn markiert",
+					"when_marked": "Wenn Schaden genommen wird",
+					"recovery_conditions": "Um den Genesungsprozess zu starten, muss die behandelnde Person eine überwundene Aktion mit einer geeigneten Fertigkeit erfolgreich ausführen. Diese Überwindungsaktion hat eine Schwierigkeit, die dem Schweregrad der Folge entspricht: Fantastisch (+6) für schwer. Diese Schwierigkeit erhöht sich um zwei, wenn Sie versuchen, sich selbst zu behandeln (es ist einfacher, jemand anderen das tun zu lassen).\n\nWenn Ihnen dieser Wurf gelingt, schreiben Sie die Konsequenz um, um anzuzeigen, dass es sich um Heilung handelt. Ein gebrochener Arm kann z. B. als Arm in einem Gips umgeschrieben werden.\n\nErfolg hier ist nur die erste Hürde - es braucht Zeit, die Konsequenz zu klären.\n\nSchwere Konsequenzen klären sich, wenn Sie einen Durchbruch erreichen.",
+					"boxes": 0,
+					"harm_can_absorb": 6
+				},
+				"Physical Stress": {
+					"name": "Körperlicher Stress",
+					"category": "Combat",
+					"description": "Einfach ausgedrückt, ist Stress ein Handlungspanzer. Es ist eine Ressource, die verwendet wird, um Ihren Charakter aufrecht und im Kampf zu halten, wenn seine Feinde ihn treffen. Wenn Sie Stress-Kästchen markieren, um einen Treffer zu absorbieren, sagen Sie damit Dinge wie \"Das hat mich knapp verfehlt\" oder \"Wow, das hat mich umgehauen, aber ich bin okay.\" Allerdings ist das eine begrenzte Ressource - die meisten Charaktere haben nur drei Kästchen für physischen Stress, obwohl Charaktere mit hohem Körperbau mehr haben.\n\n Sie finden zwei Stressspuren auf Ihrem Charakterbogen, eine für physischen Schaden und eine für mentalen Schaden. Wenn Sie einen Treffer einstecken, können Sie leere Stresskästchen des entsprechenden Typs markieren, um ihn zu absorbieren und im Kampf zu bleiben. Jedes Stressfeld, das Sie markieren, absorbiert eine Schicht. Sie können bei Bedarf mehrere Stresskästchen markieren.\n\nDie Kästchen sind binär - entweder sind sie leer und können benutzt werden oder sie sind voll und können nicht benutzt werden. Das ist jedoch in Ordnung. Die Stressspur wird gelöscht, sobald Sie die Szene überstanden haben - vorausgesetzt, die Monster fressen Sie nicht vorher auf.",
+					"universal": true,
+					"unique": true,
+					"recovery_type": "Fleeting",
+					"aspect": "No",
+					"when_marked": "When taking physical harm. Wenn Sie einen Treffer einstecken, können Sie leere Stressfelder des entsprechenden Typs markieren, um diesen zu absorbieren und im Kampf zu bleiben. Jedes markierte Stressfeld absorbiert eine Schicht. Sie können bei Bedarf mehrere Stresskästchen markieren.",
+					"recovery_conditions": "Wird am Ende jeder Szene gelöscht.",
+					"boxes": 2,
+					"label": "none",
+					"harm_can_absorb": 1,
+					"linked_skills": [
+						{
+							"linked_skill": "Somatics",
+							"rank": 1,
+							"boxes": 1,
+							"enables": false
+						},
+						{
+							"linked_skill": "Somatics",
+							"rank": 3,
+							"boxes": 2,
+							"enables": false
+						}
+					]
+				},
+				"Mental Stress": {
+					"name": "Geistiger Stress",
+					"category": "Combat",
+					"description": "Einfach ausgedrückt, ist Stress eine Handlungsrüstung. Es ist eine Ressource, die verwendet wird, um Ihren Charakter aufrecht und im Kampf zu halten, wenn seine Feinde ihn treffen. Wenn Sie Stresskästchen markieren, um einen Treffer zu absorbieren, sagen Sie Dinge wie \"Das hat mich knapp verfehlt\" oder \"Wow, das hat mir den Wind aus den Segeln genommen, aber ich bin okay.\" Allerdings ist das eine begrenzte Ressource - die meisten Charaktere haben nur drei Kästchen für mentalen Stress, obwohl Charaktere mit hohem Willen mehr haben.\n\n Auf Ihrem Charakterbogen finden Sie zwei Stressspuren, eine für körperlichen Schaden und eine für mentalen Schaden. Wenn Sie einen Treffer einstecken, können Sie leere Stresskästchen des entsprechenden Typs markieren, um ihn zu absorbieren und im Kampf zu bleiben. Jedes Stressfeld, das Sie markieren, absorbiert eine Schicht. Sie können bei Bedarf mehrere Stresskästchen markieren.\n\nDie Kästchen sind binär - entweder sind sie leer und können verwendet werden oder sie sind voll und können nicht verwendet werden. Das ist jedoch in Ordnung. Die Stressspur wird gelöscht, sobald Sie die Szene überstanden haben - vorausgesetzt, die Monster fressen Sie nicht vorher auf.",
+					"universal": true,
+					"unique": true,
+					"recovery_type": "Fleeting",
+					"aspect": "No",
+					"when_marked": "When taking mental harm. Wenn Sie einen Treffer einstecken, können Sie leere Stressfelder des entsprechenden Typs markieren, um ihn zu absorbieren und im Kampf zu bleiben. Jedes markierte Stressfeld absorbiert eine Schicht. Sie können bei Bedarf mehrere Stresskästchen markieren.",
+					"recovery_conditions": "Wird am Ende jeder Szene gelöscht.",
+					"boxes": 2,
+					"label": "none",
+					"harm_can_absorb": 1,
+					"linked_skills": [
+						{
+							"linked_skill": "Will",
+							"rank": 1,
+							"boxes": 1,
+							"enables": false
+						},
+						{
+							"linked_skill": "Will",
+							"rank": 3,
+							"boxes": 2,
+							"enables": false
+						}
+					]
+				}
+			},
+			"skills": {
+				"Athletics":{
+					"name":"Athletik",
+					"description":"The Athletics skill represents a general level of physical fitness, whether through natural talent, military training, body enhancement, etc. It’s how good you are at moving your morph with speed, grace, and precision (contrast with Somatics, p.51). Sentinels also use this skill to fly using their morph’s innate capabilities or to maneuver in non-standard gravity. Gravity acclimation is no big deal under normal circumstances. It becomes an obstacle in some cases, though, such as when you’ve just resleeved in 0.3 g after a year in 1 g, or if you’re dealing with a tricky transition from micrograv to spun gravity in a rotating space habitat.",
+					"overcome":"Athletics allows you to overcome any obstacle involving physical movement—parkour, climbing, free fall, flying, jumping, swimming, etc. You use overcome actions with Athletics to move between zones in a conflict if there is a situation aspect or other obstacle in your way. You also use Athletics to chase or race in any contests or challenges that rely on these types of activities.",
+					"caa":"When you are creating an advantage with Athletics, you are jumping to high ground, running faster than the opponent can keep up with, or performing other acrobatic maneuvers that confound your foes or otherwise make a situation to your benefit.",
+					"attack":"Athletics is generally not used to attack, though it does cover throwing dangerous items like grenades.",
+					"defend":"Athletics is a catch-all for defense in a physical conflict, against both close-quarters and ranged attacks, provided you are aware of the danger. You also use it to defend against characters who are trying to move past you, if you are in a position to physically interfere (contrast with using Somatics skill to defend against ranged attacks, which involves huddling down in a defensible position rather than moving about).",
+					"pc":true
+				 }
+			},
+			"aspects": {
+				"High Concept":{
+					"name":"Konzept","description":"Ihr hohes Konzept ist eine umfassende Beschreibung des Charakters, die die wichtigsten Punkte abdeckt. So würden Sie Ihren Pitch für den Charakter eröffnen, wenn Sie einem Freund von ihm erzählen."
+				 },
+				 "Trouble":{
+					"name":"Dilemma","description":"Der nächste Punkt ist das Problem Ihres Charakters - etwas, das das Leben Ihres Charakters kompliziert macht. Es könnte eine persönliche Schwäche, familiäre Verstrickungen oder andere Verpflichtungen sein. Wählen Sie etwas, das Sie gerne im Rollenspiel spielen!"
+				 },
+				 "Free Aspect 1":
+				 {
+					"name":"Feier Aspekt 1","description":""
+				 },
+				 "Free Aspect 2":{
+					"name":"Feier Aspekt 2","description":""
+				 }
+			},
+			"extras": [],
+			"img": "icons/svg/mystery-man.svg",
+			"token_img": "icons/svg/mystery-man.svg",
+			"default_name": "Eclipse Phase",
+			"default_description": "Eclipse Phase: Transhumanity's Fate"
+
+		},
 		"fate-accelerated": {
 			"actorLink": true,
 			"stunts": {},
@@ -1559,6 +1692,7 @@
 	"fate-core-official.ReplaceTracksHint": "Wähle ein Trackset, mit dem die aktuellen Tracks der Welt überschrieben werden sollen. KANN NICHT RÜCKGÄNGIG GEMACHT WERDEN",
 	"fate-core-official.YesFateCore": "Yes - Fate Core Defaults",
 	"fate-core-official.YesFateCondensed": "Ja - Fate Condensed Voreinstellungen",
+	"fate-core-official.YesFateEclipse":"Ja - Transhumanity's Fate Voreinstellungen",
 	"fate-core-official.YesFateAccelerated": "Ja - Fate Accelerated Voreinstellungen",
 	"fate-core-official.YesDFA": "Ja - Dresden Files Accelerated Defaults",
 	"fate-core-official.YesClearAll": "Ja - Alles löschen",
@@ -2077,6 +2211,20 @@
 			"pc": true
 		}
 	},
+
+	"fate-core-official.EclipsePhaseDefaultSkills": {
+		"Athletics":{
+			"name":"Athletik",
+			"description":"The Athletics skill represents a general level of physical fitness, whether through natural talent, military training, body enhancement, etc. It’s how good you are at moving your morph with speed, grace, and precision (contrast with Somatics, p.51). Sentinels also use this skill to fly using their morph’s innate capabilities or to maneuver in non-standard gravity. Gravity acclimation is no big deal under normal circumstances. It becomes an obstacle in some cases, though, such as when you’ve just resleeved in 0.3 g after a year in 1 g, or if you’re dealing with a tricky transition from micrograv to spun gravity in a rotating space habitat.",
+			"overcome":"Athletics allows you to overcome any obstacle involving physical movement—parkour, climbing, free fall, flying, jumping, swimming, etc. You use overcome actions with Athletics to move between zones in a conflict if there is a situation aspect or other obstacle in your way. You also use Athletics to chase or race in any contests or challenges that rely on these types of activities.",
+			"caa":"When you are creating an advantage with Athletics, you are jumping to high ground, running faster than the opponent can keep up with, or performing other acrobatic maneuvers that confound your foes or otherwise make a situation to your benefit.",
+			"attack":"Athletics is generally not used to attack, though it does cover throwing dangerous items like grenades.",
+			"defend":"Athletics is a catch-all for defense in a physical conflict, against both close-quarters and ranged attacks, provided you are aware of the danger. You also use it to defend against characters who are trying to move past you, if you are in a position to physically interfere (contrast with using Somatics skill to defend against ranged attacks, which involves huddling down in a defensible position rather than moving about).",
+			"pc":true
+		 }
+	},
+
+
 	"fate-core-official.DresdenFilesAcceleratedDefaultSkills": {
 		"Flair": {
 			"name": "Gespür",
@@ -2177,6 +2325,21 @@
 			"description": "Du kannst die letzten beiden Aspekte deines Charakters so gestalten, wie du willst - es gibt keine Einschränkungen außer der Verpflichtung, zum Setting zu passen. Wähle irgendetwas, von dem du denkst, dass es deinen Charakter interessanter macht, dass es mehr Spaß macht, ihn zu spielen, oder dass er besser mit der Welt verbunden ist, in der er lebt."
 		}
 	},
+	"fate-core-official.EclipsePhaseDefaultAspects":{
+		"High Concept":{
+		   "name":"Konzept","description":"Ihr hohes Konzept ist eine umfassende Beschreibung des Charakters, die die wichtigsten Punkte abdeckt. So würden Sie Ihren Pitch für den Charakter eröffnen, wenn Sie einem Freund von ihm erzählen."
+		},
+		"Trouble":{
+		   "name":"Dilemma","description":"Der nächste Punkt ist das Problem Ihres Charakters - etwas, das das Leben Ihres Charakters kompliziert macht. Es könnte eine persönliche Schwäche, familiäre Verstrickungen oder andere Verpflichtungen sein. Wählen Sie etwas, das Sie gerne im Rollenspiel spielen!"
+		},
+		"Free Aspect 1":
+		{
+		   "name":"Feier Aspekt 1","description":""
+		},
+		"Free Aspect 2":{
+		   "name":"Feier Aspekt 2","description":""
+		}
+	  },
 	"fate-core-official.FateAcceleratedDefaultAspects": {
 		"High Concept": {
 			"name": "Konzept",
@@ -2495,6 +2658,103 @@
 					"rank": 5,
 					"boxes": 0,
 					"enables": true
+				}
+			]
+		}
+	},
+	"fate-core-official.EclipsePhaseDefaultTracks": {
+		"Mild Consequence": {
+			"name": "Leichte Konsequenz",
+			"category": "Combat",
+			"description": "Wenn Sie eine Konsequenz nehmen, um einen Treffer zu absorbieren, schreiben Sie einen Aspekt in einen leeren Konsequenz-Slot, der beschreibt, welcher Schaden Ihrem Charakter zugefügt wird. Verwenden Sie den Schweregrad der Konsequenz als Richtwert: Wenn Sie von einer Sternenbrut gebissen wurden, könnte eine leichte Konsequenz \"Fieser Biss\" sein.",
+			"universal": true,
+			"unique": true,
+			"recovery_type": "Lasting",
+			"aspect": "Definiert, wenn markiert",
+			"when_marked": "Wenn Schaden genommen wird",
+			"recovery_conditions": "Um den Genesungsprozess zu starten, muss dem Behandelnden eine Überwindungsaktion mit einer geeigneten Fertigkeit gelingen, deren Schwierigkeit der Schwere der Konsequenz entspricht: Fair (+2) für eine leichte Konsequenz. Diese Schwierigkeit erhöht sich um zwei, wenn Sie versuchen, sich selbst zu behandeln (es ist einfacher, jemand anderen das tun zu lassen).\n\nWenn Sie bei diesem Wurf erfolgreich sind, schreiben Sie die Konsequenz um, um anzuzeigen, dass es sich um eine Heilung handelt. Ein gebrochener Arm kann z.B. als Arm in einem Gips umgeschrieben werden.\n\nErfolg hier ist nur die erste Hürde - es braucht Zeit, um die Konsequenz zu klären.\n\nMilde Konsequenzen brauchen eine volle Szene nach der Behandlung, um zu klären.",
+			"boxes": 0,
+			"harm_can_absorb": 2
+		},
+		"Moderate Consequence": {
+			"name": "Mittlere Konsequenz",
+			"category": "Combat",
+			"description": "Wenn Sie eine Konsequenz nehmen, um einen Treffer zu absorbieren, schreiben Sie einen Aspekt in einen leeren Konsequenz-Slot, der beschreibt, welcher Schaden Ihrem Charakter zugefügt wird. Verwenden Sie den Schweregrad der Konsequenz als Richtwert: Wenn Sie von einer Sternenbrut gebissen wurden, könnte eine moderate Konsequenz ein Biss sein, der nicht aufhört zu bluten.",
+			"universal": true,
+			"unique": true,
+			"recovery_type": "Lasting",
+			"aspect": "Definiert, wenn markiert",
+			"when_marked": "Wenn Schaden genommen wird",
+			"recovery_conditions": "Um den Genesungsprozess zu starten, muss die behandelnde Person eine überwundene Aktion mit einer geeigneten Fertigkeit erfolgreich ausführen. Diese Überwindungsaktion hat eine Schwierigkeit, die der Schwere der Folge entspricht: Groß (+4) für mittelschwer. Diese Schwierigkeit erhöht sich um zwei, wenn Sie versuchen, sich selbst zu behandeln (es ist einfacher, jemand anderen das tun zu lassen).\n\nWenn Ihnen dieser Wurf gelingt, schreiben Sie die Konsequenz um, um anzuzeigen, dass es sich um Heilung handelt. Ein gebrochener Arm kann z.B. als Arm in einem Gips umgeschrieben werden.\n\nErfolg hier ist nur die erste Hürde - es braucht Zeit, um die Konsequenz zu beseitigen.\n\nModerate Konsequenzen brauchen eine ganze Sitzung nach der Behandlung, um sie zu beseitigen.",
+			"boxes": 0,
+			"harm_can_absorb": 4
+		},
+		"Severe Consequence": {
+			"name": "Schwere Konsequenz",
+			"category": "Combat",
+			"description": "Schwere Konsequenzen führen direkt in die Notaufnahme (oder was auch immer das Äquivalent in Ihrem Spiel ist) - sie sind extrem fies und hindern Sie daran, eine Menge Dinge zu tun, und werden Sie für eine Weile außer Gefecht setzen. Auf der mentalen Seite drücken sie Dinge wie ein ernsthaftes Trauma oder beziehungsverändernden Schaden aus. Beispiele: Verbrennung zweiten Grades, komplizierte Fraktur, heraushängende Eingeweide, lähmende Scham, traumabedingte Phobie.",
+			"universal": true,
+			"unique": true,
+			"recovery_type": "Lasting",
+			"aspect": "Definiert, wenn markiert",
+			"when_marked": "Wenn Schaden genommen wird",
+			"recovery_conditions": "Um den Genesungsprozess zu starten, muss die behandelnde Person eine überwundene Aktion mit einer geeigneten Fertigkeit erfolgreich ausführen. Diese Überwindungsaktion hat eine Schwierigkeit, die dem Schweregrad der Folge entspricht: Fantastisch (+6) für schwer. Diese Schwierigkeit erhöht sich um zwei, wenn Sie versuchen, sich selbst zu behandeln (es ist einfacher, jemand anderen das tun zu lassen).\n\nWenn Ihnen dieser Wurf gelingt, schreiben Sie die Konsequenz um, um anzuzeigen, dass es sich um Heilung handelt. Ein gebrochener Arm kann z. B. als Arm in einem Gips umgeschrieben werden.\n\nErfolg hier ist nur die erste Hürde - es braucht Zeit, die Konsequenz zu klären.\n\nSchwere Konsequenzen klären sich, wenn Sie einen Durchbruch erreichen.",
+			"boxes": 0,
+			"harm_can_absorb": 6
+		},
+		"Physical Stress": {
+			"name": "Körperlicher Stress",
+			"category": "Combat",
+			"description": "Einfach ausgedrückt, ist Stress ein Handlungspanzer. Es ist eine Ressource, die verwendet wird, um Ihren Charakter aufrecht und im Kampf zu halten, wenn seine Feinde ihn treffen. Wenn Sie Stress-Kästchen markieren, um einen Treffer zu absorbieren, sagen Sie damit Dinge wie \"Das hat mich knapp verfehlt\" oder \"Wow, das hat mich umgehauen, aber ich bin okay.\" Allerdings ist das eine begrenzte Ressource - die meisten Charaktere haben nur drei Kästchen für physischen Stress, obwohl Charaktere mit hohem Körperbau mehr haben.\n\n Sie finden zwei Stressspuren auf Ihrem Charakterbogen, eine für physischen Schaden und eine für mentalen Schaden. Wenn Sie einen Treffer einstecken, können Sie leere Stresskästchen des entsprechenden Typs markieren, um ihn zu absorbieren und im Kampf zu bleiben. Jedes Stressfeld, das Sie markieren, absorbiert eine Schicht. Sie können bei Bedarf mehrere Stresskästchen markieren.\n\nDie Kästchen sind binär - entweder sind sie leer und können benutzt werden oder sie sind voll und können nicht benutzt werden. Das ist jedoch in Ordnung. Die Stressspur wird gelöscht, sobald Sie die Szene überstanden haben - vorausgesetzt, die Monster fressen Sie nicht vorher auf.",
+			"universal": true,
+			"unique": true,
+			"recovery_type": "Fleeting",
+			"aspect": "No",
+			"when_marked": "When taking physical harm. Wenn Sie einen Treffer einstecken, können Sie leere Stressfelder des entsprechenden Typs markieren, um diesen zu absorbieren und im Kampf zu bleiben. Jedes markierte Stressfeld absorbiert eine Schicht. Sie können bei Bedarf mehrere Stresskästchen markieren.",
+			"recovery_conditions": "Wird am Ende jeder Szene gelöscht.",
+			"boxes": 2,
+			"label": "none",
+			"harm_can_absorb": 1,
+			"linked_skills": [
+				{
+					"linked_skill": "Somatics",
+					"rank": 1,
+					"boxes": 1,
+					"enables": false
+				},
+				{
+					"linked_skill": "Somatics",
+					"rank": 3,
+					"boxes": 2,
+					"enables": false
+				}
+			]
+		},
+		"Mental Stress": {
+			"name": "Geistiger Stress",
+			"category": "Combat",
+			"description": "Einfach ausgedrückt, ist Stress eine Handlungsrüstung. Es ist eine Ressource, die verwendet wird, um Ihren Charakter aufrecht und im Kampf zu halten, wenn seine Feinde ihn treffen. Wenn Sie Stresskästchen markieren, um einen Treffer zu absorbieren, sagen Sie Dinge wie \"Das hat mich knapp verfehlt\" oder \"Wow, das hat mir den Wind aus den Segeln genommen, aber ich bin okay.\" Allerdings ist das eine begrenzte Ressource - die meisten Charaktere haben nur drei Kästchen für mentalen Stress, obwohl Charaktere mit hohem Willen mehr haben.\n\n Auf Ihrem Charakterbogen finden Sie zwei Stressspuren, eine für körperlichen Schaden und eine für mentalen Schaden. Wenn Sie einen Treffer einstecken, können Sie leere Stresskästchen des entsprechenden Typs markieren, um ihn zu absorbieren und im Kampf zu bleiben. Jedes Stressfeld, das Sie markieren, absorbiert eine Schicht. Sie können bei Bedarf mehrere Stresskästchen markieren.\n\nDie Kästchen sind binär - entweder sind sie leer und können verwendet werden oder sie sind voll und können nicht verwendet werden. Das ist jedoch in Ordnung. Die Stressspur wird gelöscht, sobald Sie die Szene überstanden haben - vorausgesetzt, die Monster fressen Sie nicht vorher auf.",
+			"universal": true,
+			"unique": true,
+			"recovery_type": "Fleeting",
+			"aspect": "No",
+			"when_marked": "When taking mental harm. Wenn Sie einen Treffer einstecken, können Sie leere Stressfelder des entsprechenden Typs markieren, um ihn zu absorbieren und im Kampf zu bleiben. Jedes markierte Stressfeld absorbiert eine Schicht. Sie können bei Bedarf mehrere Stresskästchen markieren.",
+			"recovery_conditions": "Wird am Ende jeder Szene gelöscht.",
+			"boxes": 2,
+			"label": "none",
+			"harm_can_absorb": 1,
+			"linked_skills": [
+				{
+					"linked_skill": "Will",
+					"rank": 1,
+					"boxes": 1,
+					"enables": false
+				},
+				{
+					"linked_skill": "Will",
+					"rank": 3,
+					"boxes": 2,
+					"enables": false
 				}
 			]
 		}

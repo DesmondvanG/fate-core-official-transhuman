@@ -565,6 +565,7 @@ Hooks.once('init', async function () {
             "nothing":game.i18n.localize("fate-core-official.No"),
             "fateCore":game.i18n.localize("fate-core-official.YesFateCore"),
             "fateCondensed":game.i18n.localize("fate-core-official.YesFateCondensed"),
+            "eclipsePhase":game.i18n.localize("fate-core-official.YesFateEclipse"),
             "accelerated":game.i18n.localize("fate-core-official.YesFateAccelerated"),
             "dfa":game.i18n.localize("fate-core-official.YesDFA"),
             "clearAll":game.i18n.localize("fate-core-official.YesClearAll")
@@ -587,6 +588,13 @@ Hooks.once('init', async function () {
                 if (value=="fateCondensed"){
                     if (game.user.isGM){ 
                         game.settings.set("fate-core-official","skills",game.system["lang"]["FateCondensedDefaultSkills"]);
+                        game.settings.set("fate-core-official","defaultSkills","nothing");
+                        game.settings.set("fate-core-official","skillsLabel",game.i18n.localize("fate-core-official.defaultSkillsLabel"));
+                    }
+                }
+                if (value=="eclipsePhase"){
+                    if (game.user.isGM){ 
+                        game.settings.set("fate-core-official","skills",game.system["lang"]["EclipsePhaseDefaultSkills"]);
                         game.settings.set("fate-core-official","defaultSkills","nothing");
                         game.settings.set("fate-core-official","skillsLabel",game.i18n.localize("fate-core-official.defaultSkillsLabel"));
                     }
@@ -620,6 +628,7 @@ Hooks.once('init', async function () {
                 "nothing":game.i18n.localize("No"),
                 "fateCore":game.i18n.localize("fate-core-official.YesFateCore"),
                 "fateCondensed":game.i18n.localize("fate-core-official.YesFateCondensed"),
+                "eclipsePhase":game.i18n.localize("fate-core-official.YesFateEclipse"),
                 "accelerated":game.i18n.localize("fate-core-official.YesFateAccelerated"),
                 "dfa":game.i18n.localize("fate-core-official.YesDFA"),
                 "clearAll":game.i18n.localize("fate-core-official.YesClearAll")
@@ -635,6 +644,12 @@ Hooks.once('init', async function () {
                     if (value == "fateCondensed"){
                         if (game.user.isGM){
                             game.settings.set("fate-core-official","aspects",game.system["lang"]["FateCondensedDefaultAspects"]);
+                            game.settings.set("fate-core-official","defaultAspects","nothing");
+                        }
+                    }
+                    if (value == "eclipsePhase"){
+                        if (game.user.isGM){
+                            game.settings.set("fate-core-official","aspects",game.system["lang"]["EclipsePhaseDefaultAspects"]);
                             game.settings.set("fate-core-official","defaultAspects","nothing");
                         }
                     }
@@ -671,6 +686,7 @@ Hooks.once('init', async function () {
             "nothing":game.i18n.localize("fate-core-official.No"),
             "fateCore":game.i18n.localize("fate-core-official.YesFateCore"),
             "fateCondensed":game.i18n.localize("fate-core-official.YesFateCondensed"),
+            "eclipsePhase":game.i18n.localize("fate-core-official.YesFateEclipse"),
             "accelerated":game.i18n.localize("fate-core-official.YesFateAccelerated"),
             "dfa":game.i18n.localize("fate-core-official.YesDFA"),
             "clearAll":game.i18n.localize("fate-core-official.YesClearAll")
@@ -694,6 +710,13 @@ Hooks.once('init', async function () {
                 if (value=="fateCondensed"){
                     if (game.user.isGM){
                         game.settings.set("fate-core-official","tracks",game.system["lang"]["FateCondensedDefaultTracks"]);
+                        game.settings.set("fate-core-official","defaultTracks","nothing");
+                        game.settings.set("fate-core-official","track_categories",{"Combat":"Combat","Other":"Other"});
+                    }
+                }
+                if (value=="eclipsePhase"){
+                    if (game.user.isGM){
+                        game.settings.set("fate-core-official","tracks",game.system["lang"]["EclipsePhaseDefaultTracks"]);
                         game.settings.set("fate-core-official","defaultTracks","nothing");
                         game.settings.set("fate-core-official","track_categories",{"Combat":"Combat","Other":"Other"});
                     }
