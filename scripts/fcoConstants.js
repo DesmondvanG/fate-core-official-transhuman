@@ -18,6 +18,13 @@ class fcoConstants {
                 }
     }
 
+    static async fcoEnrich (value, object){
+        let secrets = false;
+        if (object) secrets = object.isOwner;
+        if (game.user.isGM) secrets = true;
+        return DOMPurify.sanitize(await TextEditor.enrichHTML(value, {secrets:secrets, documents:true, async:true}));
+    }
+
     static getAdjective(r){
         const ladder = this.getFateLadder()
         return (ladder[r])
@@ -117,7 +124,7 @@ class fcoConstants {
         if (!confirm){
             return true;
         } else {
-            let del = await fcoConstants.awaitYesNoDialog(game.i18n.localize("fate-core-official.ConfirmDeletion"));
+            let del = await fcoConstants.awaitYesNoDialog(game.i18n.localize("fate-core-official.Delete"),game.i18n.localize("fate-core-official.ConfirmDeletion"));
             if (del=="yes"){
                 return true;
             } else {
@@ -305,6 +312,14 @@ class fcoConstants {
         if (scheme) output.fco_world_sheet_scheme = scheme;
         let formulae = game.settings.get("fate-core-official","fu-roll-formulae");
         if (formulae) output["fu-roll-formulae"] = formulae;
+        let default_actor_permission = game.settings.get("fate-core-official","default_actor_permission");
+        if (default_actor_permission) output["default_actor_permission"] = default_actor_permission;
+        let fuAspectLabelBorderAlpha = game.settings.get("fate-core-official","fuAspectLabelBorderAlpha");
+        if (fuAspectLabelBorderAlpha) output["fuAspectLabelBorderAlpha"] = fuAspectLabelBorderAlpha;
+        let fuAspectLabelFillAlpha = game.settings.get("fate-core-official","fuAspectLabelFillAlpha");
+        if (fuAspectLabelFillAlpha) output["fuAspectLabelFillAlpha"] = fuAspectLabelFillAlpha;
+        let fu_ignore_list = game.settings.get("fate-core-official","fu-ignore-list");
+        if (fu_ignore_list) output["fu-ignore-list"] = fu_ignore_list;
         return JSON.stringify(output, null, 5);
     }
 
@@ -337,17 +352,60 @@ class fcoConstants {
     
     static async importSettings (input){
         if (input.constructor === String) input = await JSON.parse(input);
-
         //This function parses a text string in JSON notation containing all of the game's settings and writes those settings to System.settings.
-        await game.settings.set("fate-core-official","stunts",input?.stunts);
-        await game.settings.set("fate-core-official","skills",input?.skills);
-        await game.settings.set("fate-core-official","skillTotal",input?.skillTotal);
+         
+        let current_stunts = game.settings.get("fate-core-official","stunts");
+        let stunts = input?.stunts;
+
+        let current_defaults = game.settings.get("fate-core-official", "defaults");
+        let defaults = input?.defaults;
+        console.log(defaults);
+
+        // Give option to merge stunts, if there are stunts in the new settings AND stunts in the existing settings.
+
+        if (Object.keys(current_stunts).length > 0){
+            if (Object.keys(stunts).length > 0){
+                let confirm = await Dialog.confirm({
+                    title:  game.i18n.localize("fate-core-official.mergeStuntsTitle"),
+                    content: `<p>${game.i18n.localize("fate-core-official.mergeStunts")}</p>`
+                });
+                if ( confirm ) {
+                    let final_stunts = mergeObject(current_stunts, stunts);
+                    await game.settings.set("fate-core-official","stunts", final_stunts);
+                } else {
+                    await game.settings.set("fate-core-official","stunts", stunts);
+                }
+            }   
+        } else {
+            await game.settings.set("fate-core-official","stunts", stunts);
+        }
+
+        // Give option to merge character default frameworks, if there are stunts in the new settings AND stunts in the existing settings.
+
+        if (Object.keys(current_defaults).length > 0){
+            if (Object.keys(defaults).length > 0){
+                let confirm = await Dialog.confirm({
+                    title:  game.i18n.localize("fate-core-official.mergeDefaultsTitle"),
+                    content: `<p>${game.i18n.localize("fate-core-official.mergeDefaults")}</p>`
+                });
+                if ( confirm ) {
+                    let final_defaults = mergeObject(current_defaults, defaults);
+                    await game.settings.set("fate-core-official","defaults", final_defaults);
+                } else {
+                    await game.settings.set("fate-core-official","defaults", defaults);
+                }
+            }   
+        } else {
+            await game.settings.set("fate-core-official","defaults", defaults);
+        }
+          
         await game.settings.set("fate-core-official","tracks",input?.tracks);
+        await game.settings.set("fate-core-official","skills",input?.skills);
+        await game.settings.set("fate-core-official","track_categories",input?.track_categories);   
+        await game.settings.set("fate-core-official","skillTotal",input?.skillTotal);
         await game.settings.set("fate-core-official","aspects",input?.aspects);
         await game.settings.set("fate-core-official","freeStunts",input?.freeStunts);
         await game.settings.set("fate-core-official","refreshTotal",input?.refreshTotal);
-        await game.settings.set("fate-core-official","track_categories",input?.track_categories);
-        await game.settings.set("fate-core-official", "defaults", input?.defaults) 
         await game.settings.set("fate-core-official", "enforceSkillTotal", input?.enforceSkillTotal);
         await game.settings.set("fate-core-official", "enforceColumn", input?.enforceColumn);
         await game.settings.set("fate-core-official", "init_skill", input?.init_skill);
@@ -366,7 +424,11 @@ class fcoConstants {
         await game.settings.set("fate-core-official", "fuAspectLabelBorderColour", input.fuAspectLabelBorderColour)
         await game.settings.set("fate-core-official", "skillsLabel", input.skillsLabel)
         if (input?.fco_world_sheet_scheme) await game.settings.set("fate-core-official", "fco-world-sheet-scheme", input.fco_world_sheet_scheme);
-        if (input?.["fu-roll-formulae"]) await game.settings.set("fate-core-official","fu_roll-formulae", input.fu_roll-formulae);
+        if (input?.["fu-roll-formulae"]) await game.settings.set("fate-core-official","fu-roll-formulae", input["fu_roll-formulae"]);
+        if (input?.["default_actor_permission"]) await game.settings.set("fate-core-official", "default_actor_permission", input["default_actor_permission"])
+        if (input?.["fuAspectLabelBorderAlpha"]) await game.settings.set("fate-core-official", "fuAspectLabelBorderAlpha", input["fuAspectLabelBorderAlpha"])
+        if (input?.["fuAspectLabelFillAlpha"]) await game.settings.set("fate-core-official", "fuAspectLabelFillAlpha", input["fuAspectLabelFillAlpha"])
+        if (input?.["fu-ignore-list"]) await game.settings.set("fate-core-official", "fu-ignore-list", input["fu-ignore-list"])
         await ui.sidebar.render(false);
     }
 
@@ -379,7 +441,8 @@ class fcoConstants {
 
         // First check for duplicates and permission to overwrite
         for (let st in stunts){
-            delete stunts[st].extra_tag;
+            delete stunts[st].extra_id;
+            delete stunts[st].original_name;
             
             if (db[st]){
                 let overwrite = await fcoConstants.awaitYesNoDialog(game.i18n.localize("fate-core-official.overwrite_element"),`${game.i18n.localize("fate-core-official.stunt")} "${db[st].name}": `+game.i18n.localize("fate-core-official.exists"));
@@ -416,25 +479,25 @@ class fcoConstants {
         // This requires the prototype module to be installed on the system so its compendiums are available.
         let packStructure = {};
         game.packs.forEach(pack => {
-            if (pack.metadata.package == module && pack.documentClass.documentName == "Actor"){
+            if (pack.metadata.packageName == module && pack.documentClass.documentName == "Actor"){
                 packStructure.actor = pack.collection;
             }
-            if (pack.metadata.package == module && pack.documentClass.documentName == "JournalEntry"){
+            if (pack.metadata.packageName == module && pack.documentClass.documentName == "JournalEntry"){
                 packStructure.journal = pack.collection;
             }
-            if (pack.metadata.package == module && pack.documentClass.documentName == "RollTable"){
+            if (pack.metadata.packageName == module && pack.documentClass.documentName == "RollTable"){
                 packStructure.table = pack.collection;
             }
-            if (pack.metadata.package == module && pack.documentClass.documentName == "Macro"){
+            if (pack.metadata.packageName == module && pack.documentClass.documentName == "Macro"){
                 packStructure.macro = pack.collection;
             }
-            if (pack.metadata.package == module && pack.documentClass.documentName == "Playlist"){
+            if (pack.metadata.packageName == module && pack.documentClass.documentName == "Playlist"){
                 packStructure.playlist = pack.collection;
             }
-            if (pack.metadata.package == module && pack.documentClass.documentName == "Item"){
+            if (pack.metadata.packageName == module && pack.documentClass.documentName == "Item"){
                 packStructure.item = pack.collection;
             }
-            if (pack.metadata.package == module && pack.documentClass.documentName == "Scene"){
+            if (pack.metadata.packageName == module && pack.documentClass.documentName == "Scene"){
                 packStructure.scene = pack.collection;
             }
         })
@@ -519,33 +582,12 @@ class fcoConstants {
     }
 
     static async importAllFromPack(pack) {
-        // Load all content
-        const documents = await pack.getDocuments();
-    
-        // Prepare import data
+        let documents = await pack.getDocuments();
         const collection = game.collections.get(pack.documentName);
-        const createData = documents.map(doc => {
-          const data = doc.toObject();
-          return data;
-        })
-    
-        // Create World Documents in batches
-        const chunkSize = 100;
-        const nBatches = Math.ceil(createData.length / chunkSize);
-        let created = [];
-        for ( let n=0; n<nBatches; n++ ) {
-          const chunk = createData.slice(n*chunkSize, (n+1)*chunkSize);
-          const docs = await pack.documentClass.createDocuments(chunk, {keepId:true}); // Keep the ID - this is important.
-          created = created.concat(docs);
+        for (let doc of documents){
+            await collection.importFromCompendium(pack, doc.id, {folder:doc.folder}, {keepId:true}); 
         }
-    
-        // Notify of success
-        ui.notifications.info(game.i18n.format("COMPENDIUM.ImportAllFinish", {
-          number: created.length,
-          folder: "correct",
-          type: pack.documentName,
-        }));
-        return created;
+        ui.notifications.info(`Imported ${documents.length} documents of type ${pack.documentName}`);
     }
 } 
 

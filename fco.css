@@ -1,66 +1,3 @@
-@font-face {
-  font-family:"Fate";
-  src:url("fonts/Fate Core Font.ttf");
-}
-
-@font-face {
-  font-family:"Jost";
-  src: url("fonts/Jost-variable.ttf");
-}
-
-@font-face {
-  font-family:"Jost";
-  src: url("fonts/Jost-italic.ttf");
-  font-style: italic;
-}
-
-@font-face {
-  font-family: "Montserrat";
-  src: url("fonts/Montserrat-Regular.otf");
-}
-@font-face {
-  font-family: "Montserrat";
-  src: url("fonts/Montserrat-Italic.otf");
-  font-style: italic;
-}
-@font-face {
-  font-family: "Montserrat";
-  src: url("fonts/Montserrat-Light.otf");
-  font-weight: 300;
-}
-@font-face {
-  font-family: "Montserrat";
-  src: url("fonts/Montserrat-LightItalic.otf");
-  font-style: italic;
-  font-weight: 300;
-}
-@font-face {
-  font-family: "Montserrat";
-  src: url("fonts/Montserrat-Bold.otf");
-  font-weight: bold;
-}
-@font-face {
-  font-family: "Montserrat";
-  src: url("fonts/Montserrat-BoldItalic.otf");
-  font-style: italic;
-  font-weight: bold;
-}
-@font-face {
-  font-family: "Montserrat";
-  src: url("fonts/Montserrat-Black.otf");
-  font-weight: 900;
-}
-@font-face {
-  font-family: "Montserrat";
-  src: url("fonts/Montserrat-BlackItalic.otf");
-  font-style: italic;
-  font-weight: 900;
-}
-@font-face {
-  font-family: "Fate Core";
-  src: url("fonts/Fate Core Font.ttf");
-}
-
 .fate.window-app .window-content h1,
 .fate.window-app .window-content h2,
 .fate.window-app .window-content h3 {
@@ -68,6 +5,10 @@
   border: none;
   font-family: var(--fco-font-family);
   text-transform: uppercase;
+}
+
+.journal-entry-page.pdf {
+  height:100%;
 }
 
 .rolls h1,
@@ -386,6 +327,10 @@ textarea [name="command"] {
   display: block;
 }
 
+.cd_datum_rich:hover {
+  background-color: var(--fco-foundry-interactable-color);
+}
+
 /* Countdown Checkbox - The container */
 .cdbox {
   display: flex-row;
@@ -496,6 +441,10 @@ textarea [name="command"] {
 }
 
 .fu_aspect_box:hover {
+  background-color: var(--fco-foundry-interactable-color) !important;
+}
+
+.fu_notes:hover {
   background-color: var(--fco-foundry-interactable-color) !important;
 }
 
